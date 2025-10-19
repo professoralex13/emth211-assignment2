@@ -12,7 +12,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Complex LaTeX document
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python scripts
+        run: |
+          for script in $(find ./ -maxdepth 1 -type f -name "*.py"); do
+            echo "Running $script..."
+            python "$script"
+          done
+
+      - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: assignment.tex
