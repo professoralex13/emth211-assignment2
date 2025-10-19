@@ -63,6 +63,7 @@
   \begin{figure}[h!]
     \centering
     \includegraphics[width=100mm]{1a.graph.png}
+    \caption{Plot of maximum floating point operations per second achieved by the fastest supercomputer in each year}
   \end{figure}
 
 \item
@@ -101,11 +102,13 @@
   \begin{figure}[H]
     \centering
     \includegraphics[width=80mm]{1b.graph.png}
+    \caption{Maximum Flops per second with line of best fit}
   \end{figure}
 \item I will arbitrarily choose 2015 as the split year, this results in the graph:
   \begin{figure}[H]
     \centering
     \includegraphics[width=80mm]{1c.graph.png}
+    \caption{Maximum Flops per second with seperate lines of best fit}
   \end{figure}
   This change may be influenced by the fast growth in machine learning and artificial inteligence occuring in the late 2010s vastly increasing the demand for computational power.
   This year may have not been the best point to split the lines, due to the fact that the lines do not connect to each other.
@@ -117,6 +120,8 @@
   This means the extrpolation in 1969 had an error of 5.28. This is quite a large error, and speaks to the fact that extrapolation is generally less reliable than interpolation.
   The behavior of the data in the extrapolation region has no effect on the line of best fit, which is why the line of best fit is less reliable at predicting that behavior than that which is inside its range.
 \end{enumerate}
+
+\pagebreak
 \section*{Question 2}
 \begin{enumerate}[a)]
 \item The Images I will use for this question are:
@@ -135,12 +140,15 @@
 
 Part a) doesen't really have an answer to show, but the code for the next parts use the code written for this.
 \item
-\begin{figure}
+I would say the images need Rank 3 to look vaguely recogniseable.
+\begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{2b.graph.png}
 \caption{Approximations up to Rank 5 of Hooty and Bitey}
 \end{figure}
-I would say the images need Rank 3 to look vaguely recogniseable.
+The code for finding the rank $r$ approximation of a matrix is:
+\lstinputlisting[language=Python, firstline=7, lastline=10]{part2.py}
+This is applied to each of the three colour channels (Red, Green, Blue) of each image.
 \item
 For an $n \times n$ matrix, a total of $k(2n + 1)$ numbers are required for a rank $k$ approximation.
 Lossless compression is achieved when k equals the rank of the original matrix.
@@ -154,8 +162,6 @@ This means that the maximum rank matrix which can achieve lossless compression i
 \caption{Demonstration of Higher rank approximations on specific colour channels}
 \end{figure}
 \end{enumerate}
-
-\pagebreak
 \section*{Question 3}
 
 \begin{enumerate}[a)]
