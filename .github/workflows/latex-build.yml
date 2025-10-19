@@ -32,8 +32,25 @@ jobs:
         with:
           root_file: assignment.tex
       
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
+      - name: Delete Previous
+        uses: mknejp/delete-release-assets@v1
         with:
-          name: compiled-pdf
-          path: assignment.pdf
+          token: ${{ github.token }}
+          tag: main
+          assets: '*.*'
+          fail-if-no-assets: false
+          fail-if-no-release: false
+        if: github.ref == 'refs/heads/master'
+
+      - name: Release to master
+        uses: softprops/action-gh-release@v1
+        with:
+          files: assignment.pdf
+          tag_name: master
+        if: github.ref == 'refs/heads/master'
+
+      - name: Release to tag
+        uses: softprops/action-gh-release@v1
+        with:
+          files: assignment.pdf
+        if: startsWith(github.ref, 'refs/tags/')
